@@ -256,7 +256,20 @@ code {
   width: 153%;
   line-height: 0;
 }
-.gate-flash img { display: block; width: 100%; height: auto; }
+/* Two classes, not one: this has to outrank `.hero-photo img`, and in particular
+   its mobile override further down the file, which otherwise wins on source
+   order and pins the diagram to the portrait's 128px box and cover-crop.
+   The same reason the rest of the portrait's styling is reset here. */
+.hero-photo .gate-flash img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  object-fit: fill;
+  box-shadow: none;
+  animation: none;
+}
 
 .gate-pin {
   position: absolute;
