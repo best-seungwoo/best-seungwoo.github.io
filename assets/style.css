@@ -1,0 +1,730 @@
+/* ===========================================================
+   Seungwoo Choi — personal site
+   =========================================================== */
+
+:root {
+  --navy:      #16324f;
+  --navy-soft: #24507a;
+  --accent:    #2b8cc4;
+  --accent-dk: #1d6d9c;
+  --ink:       #1f2933;
+  --ink-2:     #3e4c59;
+  --muted:     #6b7a89;
+  --line:      #e3e8ee;
+  --bg:        #ffffff;
+  --bg-alt:    #f6f8fa;
+  --tag-bg:    #eaf2f8;
+  --maxw:      880px;
+  --radius:    8px;
+
+  /* publication keyword colours, shared by the titles and the legend.
+     All four clear 4.5:1 on white — brighter greens/cyans do not. */
+  --k-sim:     #047857;
+  --k-comp:    #6d28d9;
+  --k-vqa:     #b45309;
+  --k-err:     #dc2626;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-dk); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+.muted { color: var(--muted); }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 60px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.brand:hover { text-decoration: none; color: var(--accent-dk); }
+
+.topnav {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav::-webkit-scrollbar { display: none; }
+
+.topnav a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.topnav a:hover { color: var(--accent-dk); text-decoration: none; }
+.topnav a.active { color: var(--accent-dk); border-bottom-color: var(--accent); }
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 56px 0 44px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-text { flex: 1 1 auto; min-width: 0; }
+
+.hero h1 {
+  margin: 0 0 6px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+}
+
+.tagline {
+  margin: 0 0 14px;
+  /* sized so the first line clears the hero column without wrapping */
+  font-size: 0.97rem;
+  color: var(--ink-2);
+}
+
+.contact {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  font-size: 0.93rem;
+  color: var(--ink-2);
+}
+.contact li { display: flex; align-items: center; gap: 8px; }
+.contact .ico { color: var(--accent); width: 1em; text-align: center; }
+
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--navy);
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.links a:hover {
+  text-decoration: none;
+  background: var(--tag-bg);
+  border-color: var(--accent);
+  color: var(--accent-dk);
+}
+
+/* icons inherit the pill's text colour, so they follow the hover state too */
+.links svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.hero-photo { flex: 0 0 auto; }
+
+.hero-photo img,
+.hero-photo .photo-fallback {
+  /* block, not inline — an inline img leaves baseline space below it, which
+     would make .hero-photo taller than wide and the gate overlay an ellipse */
+  display: block;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg-alt);
+  box-shadow: 0 4px 18px rgba(22, 50, 79, 0.12);
+}
+
+.hero-photo .photo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, var(--navy), var(--accent));
+  color: #fff;
+  font-family: "Lora", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- eight gates (click the portrait) ----------
+   Everything here is created by main.js, so with JS off the hero photo
+   stays an ordinary, non-interactive image. */
+
+.hero-photo.gates { position: relative; cursor: pointer; }
+.hero-photo.gates:focus-visible { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 50%; }
+
+/* the chakra diagram, flashed over the portrait before the swap.
+   `inset: 0` covers the photo's border ring too, so no frame shows through. */
+.gate-flash {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s, visibility 0.22s;
+  pointer-events: none;
+}
+.hero-photo.flashing .gate-flash { opacity: 1; visibility: visible; }
+
+/* the portrait rattles only while a gate is being forced open, harder each time */
+.hero-photo.flashing { animation: gate-shake 0.08s linear infinite; }
+
+@keyframes gate-shake {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(calc(var(--shake, 2px) * -1), var(--shake, 2px)); }
+  50%      { transform: translate(var(--shake, 2px), calc(var(--shake, 2px) * -1)); }
+  75%      { transform: translate(var(--shake, 2px), var(--shake, 2px)); }
+}
+
+/* Oversized so the figure fills ~85% of the circle height; side labels crop away.
+   flex-shrink:0 is load-bearing — as a flex item it would otherwise be squeezed
+   back down to the container width and the zoom would do nothing.
+   The figure sits at 48.15% of the image width, not 50%, so nudge it right by
+   the 1.85% difference to put the body on the circle's axis. */
+.gate-flash-inner {
+  position: relative;
+  flex: 0 0 auto;
+  width: 161%;
+  transform: translateX(1.85%);
+  line-height: 0;
+}
+.gate-flash img { display: block; width: 100%; height: auto; }
+
+.gate-pin {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  margin: -8.5px 0 0 -8.5px;
+  border: 2px solid #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 9px #22c55e;
+  animation: gate-pin-pulse 0.85s ease-in-out infinite;
+}
+.hero-photo.seventh .gate-pin { border-color: #22d3ee; box-shadow: 0 0 11px #22d3ee; }
+.hero-photo.final   .gate-pin { border-color: #ef4444; box-shadow: 0 0 11px #ef4444; }
+
+@keyframes gate-pin-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%      { transform: scale(1.35); opacity: 0.5; }
+}
+
+/* the eighth gate shockwave */
+.gate-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 176px;
+  height: 176px;
+  margin: -88px 0 0 -88px;
+  border: 3px solid var(--wave, #ef4444);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-photo.burst .gate-wave { animation: gate-wave 0.95s ease-out; }
+
+@keyframes gate-wave {
+  from { transform: scale(0.9); opacity: 0.9; border-width: 9px; }
+  to   { transform: scale(3.4); opacity: 0;   border-width: 1px; }
+}
+
+.gate-label {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #15803d;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.hero-photo.flashing .gate-label { opacity: 1; }
+.hero-photo.seventh .gate-label { color: #0e7490; }
+.hero-photo.final   .gate-label { color: #dc2626; }
+.gate-label b {
+  display: block;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+}
+
+/* seventh gate: blue fire. eighth: red. both stay lit until reset. */
+.hero-photo.seventh { --wave: #22d3ee; }
+.hero-photo.final   { --wave: #ef4444; }
+
+.hero-photo.seventh img,
+.hero-photo.seventh .photo-fallback {
+  animation: gate-flame-blue 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes gate-flame-blue {
+  from {
+    border-color: #3b82f6;
+    box-shadow: 0 0 26px 4px #3b82f6, 0 0 62px 10px rgba(59, 130, 246, 0.45);
+  }
+  to {
+    border-color: #67e8f9;
+    box-shadow: 0 0 46px 11px #22d3ee, 0 0 96px 20px rgba(34, 211, 238, 0.5);
+  }
+}
+
+.hero-photo.final img,
+.hero-photo.final .photo-fallback {
+  animation: gate-flame 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes gate-flame {
+  from {
+    border-color: #ef4444;
+    box-shadow: 0 0 26px 4px #ef4444, 0 0 62px 10px rgba(239, 68, 68, 0.45);
+  }
+  to {
+    border-color: #fb923c;
+    box-shadow: 0 0 46px 11px #f97316, 0 0 96px 20px rgba(249, 115, 22, 0.5);
+  }
+}
+
+/* respect a reduced-motion preference: keep the gate names, drop the motion */
+@media (prefers-reduced-motion: reduce) {
+  .gate-pin { animation: none; }
+  .hero-photo.flashing { animation: none; }
+  .hero-photo.seventh img,
+  .hero-photo.seventh .photo-fallback {
+    animation: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 26px 4px #3b82f6;
+  }
+  .hero-photo.final img,
+  .hero-photo.final .photo-fallback {
+    animation: none;
+    border-color: #ef4444;
+    box-shadow: 0 0 26px 4px #ef4444;
+  }
+  .hero-photo.burst .gate-wave { animation: none; }
+}
+
+/* ---------- sections ---------- */
+
+section { padding: 40px 0 8px; }
+
+section h2 {
+  margin: 0 0 20px;
+  padding-bottom: 8px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 2px solid var(--line);
+  position: relative;
+}
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 54px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.sub {
+  margin: 24px 0 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-dk);
+}
+.sub:first-child { margin-top: 0; }
+
+.section-note { margin: -8px 0 18px; font-size: 0.88rem; color: var(--muted); }
+
+section p { margin: 0 0 14px; }
+
+.bullets { margin: 16px 0 0; padding-left: 20px; }
+.bullets li { margin-bottom: 6px; }
+
+/* ---------- timeline ---------- */
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 64px 180px 1fr;
+  gap: 0 20px;
+  padding: 0 0 22px 0;
+}
+
+.tl-logo { align-self: start; padding-top: 1px; }
+
+/* real school marks differ in aspect ratio, so letterbox rather than squash */
+.tl-logo img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.tl-when {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-dk);
+  padding-top: 3px;
+}
+
+.tl-what { min-width: 0; }
+
+.tl-what h3 {
+  margin: 0 0 2px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.tl-what .role {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+.tl-what .meta { margin: 0; font-size: 0.9rem; color: var(--ink-2); }
+
+/* ---------- publications ---------- */
+
+.pubs { list-style: none; margin: 0; padding: 0; counter-reset: pub; }
+
+.pubs li {
+  display: flex;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pubs li:last-child { border-bottom: none; }
+
+/* venue badge with the author position stacked under it */
+.venue-col {
+  flex: 0 0 100px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 3px;
+}
+.venue-col .tag { text-align: center; }
+
+.venue {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--navy-soft);
+  border-radius: 4px;
+  padding: 3px 6px;
+}
+
+.pub-body { flex: 1 1 auto; min-width: 0; }
+
+.pub-body h3 {
+  margin: 0 0 3px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pub-body h3 a { color: inherit; }
+/* underline on hover instead of recolouring, so the keyword coding survives */
+.pub-body h3 a:hover { color: var(--accent-dk); text-decoration: underline; }
+
+/* Keywords sit flush with the rest of the title until you hover a legend entry;
+   main.js then stamps data-hl on the section and only that group lights up. */
+.pub-body h3 b { font-weight: inherit; color: inherit; transition: color 0.15s; }
+
+#publications[data-hl="sim"]  .pub-body h3 b.k-sim,
+#publications[data-hl="comp"] .pub-body h3 b.k-comp,
+#publications[data-hl="vqa"]  .pub-body h3 b.k-vqa,
+#publications[data-hl="err"]  .pub-body h3 b.k-err { font-weight: 700; }
+
+#publications[data-hl="sim"]  .pub-body h3 b.k-sim  { color: var(--k-sim); }
+#publications[data-hl="comp"] .pub-body h3 b.k-comp { color: var(--k-comp); }
+#publications[data-hl="vqa"]  .pub-body h3 b.k-vqa  { color: var(--k-vqa); }
+#publications[data-hl="err"]  .pub-body h3 b.k-err  { color: var(--k-err); }
+
+/* legend, parked on the right of the section heading */
+#publications h2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2px 20px;
+}
+
+.pub-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.pub-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  opacity: 0.72;
+  transition: opacity 0.15s;
+}
+.pub-legend span:hover,
+.pub-legend span:focus-visible,
+.pub-legend span.pinned { opacity: 1; }
+.pub-legend span:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 3px; }
+.pub-legend span::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.pub-legend .k-sim  { color: var(--k-sim); }
+.pub-legend .k-comp { color: var(--k-comp); }
+.pub-legend .k-vqa  { color: var(--k-vqa); }
+.pub-legend .k-err  { color: var(--k-err); }
+
+.pub-body p { margin: 0 0 6px; font-size: 0.9rem; color: var(--ink-2); }
+
+/* must outrank `.pub-body p` above, hence the two-class selector */
+.pub-body .pub-where {
+  margin: 0 0 5px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ---------- tags ---------- */
+
+.tag {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-dk);
+  background: var(--tag-bg);
+  border-radius: 4px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+.tag.first { color: #fff; background: var(--accent); }
+
+/* ---------- projects ---------- */
+
+.projects { display: flex; flex-direction: column; gap: 18px; }
+
+.project {
+  padding: 18px 20px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.project .when {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-dk);
+  margin-bottom: 2px;
+}
+
+.project h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.project ul { margin: 0; padding-left: 20px; }
+.project li { margin-bottom: 5px; font-size: 0.93rem; color: var(--ink-2); }
+.project li:last-child { margin-bottom: 0; }
+
+/* ---------- plain lists ---------- */
+
+.plain { list-style: none; margin: 0; padding: 0; }
+
+.plain li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+.plain li:last-child { border-bottom: none; }
+.plain li b { font-weight: 600; color: var(--ink); }
+.plain li b a { color: inherit; }
+.plain li b a:hover { color: var(--accent-dk); text-decoration: underline; }
+.plain li .muted { font-size: 0.86rem; }
+
+.plain li .tag { flex: 0 0 auto; min-width: 110px; text-align: center; }
+.talks li .tag { min-width: 140px; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 40px;
+}
+
+/* ---------- skills ---------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 8px 40px;
+}
+
+.skill-list { list-style: none; margin: 0; padding: 0; }
+
+.skill-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 5px 0;
+  font-size: 0.93rem;
+  font-weight: 500;
+}
+
+.dots { display: inline-flex; gap: 5px; flex: 0 0 auto; }
+
+.dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--line);
+  display: block;
+}
+.dots i.on { background: var(--accent); }
+
+/* ---------- footer ---------- */
+
+footer {
+  margin-top: 56px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  background: var(--bg-alt);
+}
+footer p { margin: 0; font-size: 0.85rem; color: var(--muted); text-align: center; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 22px;
+    padding-top: 36px;
+  }
+  .hero h1 { font-size: 1.9rem; }
+  .hero-photo img, .hero-photo .photo-fallback { width: 128px; height: 128px; }
+
+  /* the hero stacks photo-first here, so the gate name goes beside it, not under */
+  .gate-wave { width: 136px; height: 136px; margin: -68px 0 0 -68px; }
+  .gate-label {
+    top: 50%;
+    left: calc(100% + 14px);
+    transform: translateY(-50%);
+    text-align: left;
+  }
+
+  /* logo keeps its own column; date stacks above the details */
+  .timeline li { grid-template-columns: 64px 1fr; gap: 2px 16px; }
+  .tl-logo { grid-column: 1; grid-row: 1 / span 2; }
+  .tl-when { grid-column: 2; grid-row: 1; }
+  .tl-what { grid-column: 2; grid-row: 2; }
+
+  .pubs li { flex-direction: column; gap: 8px; }
+  /* badge and author position sit side by side once the column is gone */
+  .venue-col { flex: none; flex-direction: row; align-items: center; gap: 8px; margin-top: 0; }
+  .venue { min-width: 100px; }
+
+  .two-col { grid-template-columns: 1fr; }
+  .plain li .tag, .talks li .tag { min-width: 0; }
+}
+
+@media (max-width: 560px) {
+  .topbar-inner { height: auto; flex-direction: column; align-items: flex-start; gap: 6px; padding-top: 10px; padding-bottom: 8px; }
+  html { scroll-padding-top: 110px; }
+  .topnav { width: 100%; }
+}
+
+/* ---------- print ---------- */
+
+@media print {
+  .topbar, footer, .links { display: none; }
+  body { font-size: 11pt; }
+  section { page-break-inside: avoid; }
+}
