@@ -27,10 +27,18 @@ document.querySelectorAll('.dots').forEach(function (el) {
     ['死門', 'Shimon',  'Gate of Death']
   ];
 
-  // where each gate sits on the chakra diagram, as % of the image box
+  // Where each gate sits on the chakra diagram, as % of the image box. Measured
+  // from the marker boxes in gates-diagram.jpg, not eyeballed — re-measure if
+  // that image is ever re-cropped, since these are relative to its width.
   var PINS = [
-    [51.8, 15.2], [46.0, 15.2], [48.6, 34.8], [48.6, 40.2],
-    [48.6, 46.7], [48.6, 52.3], [48.6, 57.9], [54.2, 38.1]
+    [53.21, 15.00],   // 1 開門
+    [47.05, 14.90],   // 2 休門
+    [50.25, 34.79],   // 3 生門
+    [50.10, 40.75],   // 4 傷門
+    [49.89, 46.68],   // 5 杜門
+    [49.72, 52.30],   // 6 景門
+    [49.74, 58.41],   // 7 驚門
+    [55.70, 38.75]    // 8 死門
   ];
 
   var PORTRAIT = {

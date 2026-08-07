@@ -253,7 +253,7 @@ code {
 .gate-flash-inner {
   position: relative;
   flex: 0 0 auto;
-  width: 155%;
+  width: 153%;
   line-height: 0;
 }
 .gate-flash img { display: block; width: 100%; height: auto; }
