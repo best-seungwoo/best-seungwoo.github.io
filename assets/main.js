@@ -35,8 +35,8 @@ document.querySelectorAll('.dots').forEach(function (el) {
 
   var PORTRAIT = {
     closed: 'assets/profile.jpg',
-    open:   'assets/1-7gates_open.jpg',   // gates 1-7
-    eighth: 'assets/8gates_open.jpg'      // gate 8
+    open:   'assets/gates-1-7.jpg',   // gates 1-7
+    eighth: 'assets/gates-8.jpg'      // gate 8
   };
 
   var FLASH = 850;   // ms the diagram covers the portrait before the swap shows
@@ -49,7 +49,7 @@ document.querySelectorAll('.dots').forEach(function (el) {
   flash.setAttribute('aria-hidden', 'true');
   flash.innerHTML =
     '<span class="gate-flash-inner">' +
-      '<img src="assets/8gates.webp" alt="">' +
+      '<img src="assets/gates-diagram.jpg" alt="">' +
       '<span class="gate-pin"></span>' +
     '</span>';
 
@@ -126,40 +126,46 @@ document.querySelectorAll('.dots').forEach(function (el) {
   });
 })();
 
-// ---- publication legend: light up one keyword group at a time ----
+// ---- publication topic filter ----
 (function () {
   var pubs = document.getElementById('publications');
   if (!pubs) return;
-  var items = Array.prototype.slice.call(pubs.querySelectorAll('.pub-legend span'));
-  if (!items.length) return;
+  var boxes = Array.prototype.slice.call(pubs.querySelectorAll('.pub-legend input'));
+  var papers = Array.prototype.slice.call(pubs.querySelectorAll('.pubs > li'));
+  var count = pubs.querySelector('.pub-count');
+  if (!boxes.length || !papers.length) return;
 
-  var pinned = null;   // a click keeps a group lit; needed on touch, where nothing hovers
+  // tag each paper with the topics its title keywords belong to
+  papers.forEach(function (li) {
+    var topics = [];
+    li.querySelectorAll('.pub-body h3 b').forEach(function (b) {
+      var m = /\bk-(\w+)\b/.exec(b.className);
+      if (m && topics.indexOf(m[1]) < 0) topics.push(m[1]);
+    });
+    li.dataset.topics = topics.join(' ');
+  });
 
-  function apply(key) {
-    if (key) pubs.setAttribute('data-hl', key);
-    else pubs.removeAttribute('data-hl');
-    items.forEach(function (el) { el.classList.toggle('pinned', el.dataset.k === pinned); });
+  function update() {
+    var on = boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
+
+    ['sim', 'comp', 'vqa', 'err'].forEach(function (t) {
+      pubs.classList.toggle('hl-' + t, on.indexOf(t) >= 0);
+    });
+
+    // nothing ticked means no filter at all, rather than an empty list
+    var shown = 0;
+    papers.forEach(function (li) {
+      var topics = li.dataset.topics ? li.dataset.topics.split(' ') : [];
+      var match = !on.length || on.some(function (t) { return topics.indexOf(t) >= 0; });
+      li.hidden = !match;
+      if (match) shown++;
+    });
+
+    count.textContent = on.length ? 'Showing ' + shown + ' of ' + papers.length + '.' : '';
   }
 
-  items.forEach(function (el) {
-    var m = /\bk-(\w+)\b/.exec(el.className);
-    if (!m) return;
-    el.dataset.k = m[1];
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('role', 'button');
-
-    el.addEventListener('mouseenter', function () { apply(el.dataset.k); });
-    el.addEventListener('mouseleave', function () { apply(pinned); });
-    el.addEventListener('focus', function () { apply(el.dataset.k); });
-    el.addEventListener('blur', function () { apply(pinned); });
-    el.addEventListener('click', function () {
-      pinned = (pinned === el.dataset.k) ? null : el.dataset.k;
-      apply(pinned || el.dataset.k);
-    });
-    el.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
-    });
-  });
+  boxes.forEach(function (b) { b.addEventListener('change', update); });
+  update();
 })();
 
 // ---- highlight the nav link of the section currently in view ----

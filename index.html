@@ -22,10 +22,11 @@
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#publications">Publications</a>
-<!--   <a href="#projects">Projects</a> -->
+      <a href="#projects">Projects</a>
       <a href="#patents">Patents</a>
       <a href="#activities">Activities</a>
       <a href="#skills">Skills</a>
+      <a href="#beyond">Beyond</a>
     </nav>
   </div>
 </header>
@@ -51,7 +52,7 @@
         <a href="https://scholar.google.com" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.24 13.77 0 9.5 12 0l12 9.5-5.24 4.27C17.55 11.25 14.98 9.5 12 9.5s-5.55 1.75-6.76 4.27z"/><circle cx="12" cy="17" r="7"/></svg>
           Google Scholar</a>
-        <a href="assets/Resume_Seungwoo_Choi.pdf" target="_blank" rel="noopener">
+        <a href="assets/seungwoo-choi-cv.pdf" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6 2h7.2L19 7.8V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.4v4.4h4.4L14 3.4zM7.8 13h8.4v1.5H7.8V13zm0 3.5h8.4V18H7.8v-1.5z"/></svg>
           CV (PDF)</a>
       </div>
@@ -67,15 +68,15 @@
   <section id="about">
     <h2>About</h2>
     <p>
-      I am a fifth-year Ph.D. at the
+      I am a fifth-year Ph.D. candidate at the
       <a href="http://escal.yonsei.ac.kr/" target="_blank" rel="noopener">Embedded Systems and Computer Architecture Lab
       (eSCaL)</a>, School of Electrical and Electronic Engineering, Yonsei University, advised by Prof. Won Woo Ro.
     </p>
     <p>
-      My research interests and experience span the quantum software stack, though they are not limited to:
+      My research interests and experience span the quantum software stack, including but not limited to:
     </p>
     <ul class="bullets">
-      <li><strong>Quantum circuit simulation</strong> &mdash; accelerating state-vector and tensor-network based simulation methods.</li>
+      <li><strong>Quantum circuit simulation</strong> &mdash; accelerating state-vector and tensor-network simulation.</li>
       <!-- <li><strong>Quantum circuit compilation</strong> &mdash; optimizing layout & routing, qubit reuse, and synthesis optimization.</li> -->
       <li><strong>Quantum chemistry algorithms</strong> &mdash; ADAPT-VQE and sample-based quantum diagonalization (SQD).</li>
       <li><strong>Quantum error correction</strong> &mdash; code switching techniques and FTQC resource estimation.</li>
@@ -87,15 +88,15 @@
     <h2>Education &amp; Experience</h2>
     <ul class="timeline">
       <li>
-        <div class="tl-logo"><img src="assets/yonsei_symbol6.png" alt="Yonsei University"></div>
+        <div class="tl-logo"><img src="assets/logo-yonsei.png" alt="Yonsei University"></div>
         <div class="tl-when">Mar 2022 &ndash; Feb 2028 <span class="muted">(expected)</span></div>
         <div class="tl-what">
-          <h3>Yonsei University <span class="role">M.S./Ph.D. Student</span></h3>
+          <h3>Yonsei University <span class="role">Ph.D. Candidate</span></h3>
           <p class="meta">Electrical and Electronic Engineering (Advisor: Prof. Won Woo Ro)</p>
         </div>
       </li>
       <li>
-        <div class="tl-logo"><img src="assets/Rutgers_Scarlet_Knights_logo.svg" alt="Rutgers University"></div>
+        <div class="tl-logo"><img src="assets/logo-rutgers.svg" alt="Rutgers University"></div>
         <div class="tl-when">Jan 2025 &ndash; Jul 2026</div>
         <div class="tl-what">
           <h3>Rutgers University <span class="role">Visiting Scholar</span></h3>
@@ -103,7 +104,7 @@
         </div>
       </li>
       <li>
-        <div class="tl-logo"><img src="assets/yonsei_symbol6.png" alt="Yonsei University"></div>
+        <div class="tl-logo"><img src="assets/logo-yonsei.png" alt="Yonsei University"></div>
         <div class="tl-when">Mar 2016 &ndash; Feb 2022</div>
         <div class="tl-what">
           <h3>Yonsei University <span class="role">B.S.</span></h3>
@@ -116,12 +117,12 @@
   <!-- ===== PUBLICATIONS ===== -->
   <section id="publications">
     <h2>Publications<span class="pub-legend">
-      <span class="k-sim">Simulation</span>
-      <span class="k-comp">Compilation &amp; optimization</span>
-      <span class="k-vqa">VQA</span>
-      <span class="k-err">Error mitigation</span>
+      <label class="k-sim"><input type="checkbox" value="sim">Simulation</label>
+      <label class="k-comp"><input type="checkbox" value="comp">Compilation &amp; optimization</label>
+      <label class="k-vqa"><input type="checkbox" value="vqa">VQA</label>
+      <label class="k-err"><input type="checkbox" value="err">Error mitigation</label>
     </span></h2>
-    <p class="section-note">Author position is noted for each paper. Hover a legend colour to highlight its keywords.</p>
+    <p class="pub-count"></p>
     <ol class="pubs">
       <li>
         <div class="venue-col">
@@ -164,7 +165,7 @@
         <div class="pub-body">
           <h3><a href="https://ieeexplore.ieee.org/document/11018854" target="_blank" rel="noopener">q-Point: A Numeric Format for <b class="k-sim">Quantum Circuit Simulation</b> using Polar Form Complex Numbers</a></h3>
           <!-- <p class="pub-where">IEEE Transactions on Emerging Topics in Computing, Vol. 13 &middot; Sep 1, 2025</p> -->
-          <p>Introduced a polar form numeric format to enhance memory efficiency in classical state-vector simulation.</p>
+          <p>Introduced a polar-form numeric format to enhance memory efficiency in classical state-vector simulation.</p>
         </div>
       </li>
       <li>
@@ -175,7 +176,7 @@
         <div class="pub-body">
           <h3><a href="https://dl.acm.org/doi/10.1145/3695053.3731020" target="_blank" rel="noopener">QR-Map: A Map-Based Approach to Quantum Circuit Abstraction for <b class="k-comp">Qubit Reuse Optimization</b></a></h3>
           <!-- <p class="pub-where">International Symposium on Computer Architecture &middot; Jun 24, 2025</p> -->
-          <p>Designed a qubit reuse framework that abstracts circuits into maps to minimize required physical qubits.</p>
+          <p>Designed a qubit reuse framework that abstracts circuits into maps to minimize the number of physical qubits required.</p>
         </div>
       </li>
       <li>
@@ -247,9 +248,40 @@
     </ol>
   </section>
 
-  <!-- ===== PROJECTS: hidden for now. Delete this marker and the closing one below to restore. =====
+  <!-- ===== PROJECTS ===== -->
   <section id="projects">
     <h2>Projects</h2>
+    <p class="section-note">Funded industry and government research projects.</p>
+    <ul class="timeline logos-wide">
+      <li>
+        <div class="tl-logo"><img src="assets/logo-nrf.png" alt="National Research Foundation of Korea"></div>
+        <div class="tl-when">Oct 2023 &ndash; Dec 2025</div>
+        <div class="tl-what">
+          <h3>Research on Quantum Pulse Latency Reduction through Quantum Optimal Control Framework</h3>
+          <p class="meta">National Research Foundation of Korea</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-logo"><img src="assets/logo-hyundai.png" alt="Hyundai"></div>
+        <div class="tl-when">Mar 2024 &ndash; Oct 2024</div>
+        <div class="tl-what">
+          <h3>Developing a High-Speed Quantum Circuit Simulator Supporting Verification and Testing of Hyperscale Quantum Algorithms</h3>
+          <p class="meta">Hyundai Next Generation Vehicle</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-logo"><img src="assets/logo-samsung.svg" alt="Samsung"></div>
+        <div class="tl-when">Jun 2021 &ndash; May 2023</div>
+        <div class="tl-what">
+          <h3>A Heterogeneous Multi-Node Quantum Simulator with Qubit Optimization</h3>
+          <p class="meta">Samsung Research Funding &amp; Incubation Center</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== Individual research projects, parked. Delete this marker and the closing one below to restore. =====
+  <section id="research-projects">
     <h3 class="sub">Research Projects</h3>
     <div class="projects">
       <article class="project">
@@ -311,22 +343,22 @@
       </article>
     </div>
   </section>
-  ===== end of hidden Projects section ===== -->
+  ===== end of parked research projects ===== -->
 
   <!-- ===== PATENTS ===== -->
   <section id="patents">
     <h2>Patents</h2>
     <ul class="plain">
       <li>
-        <span class="tag">US &middot; Pending</span>
-        <b><a href="https://patents.google.com/patent/US20260079808A1/" target="_blank" rel="noopener">Method for Operating a Quantum Computing System and a Quantum Computing System</a></b>
-      </li>
-      <li>
         <span class="tag">KR &middot; Pending</span>
         <b>Simulation Method for Quantum Circuit and Simulation Device Thereof</b>
       </li>
       <li>
-        <span class="tag">KR &middot; Pending</span>
+        <span class="tag">US &middot; Published</span>
+        <b><a href="https://patents.google.com/patent/US20260079808A1/" target="_blank" rel="noopener">Method for Operating a Quantum Computing System and a Quantum Computing System</a></b>
+      </li>
+      <li>
+        <span class="tag">KR &middot; Published</span>
         <b><a href="https://www.kipris.or.kr/khome/detail/newWindow.do" target="_blank" rel="noopener">Method for Operating a Quantum Computing System and a Quantum Computing System</a></b>
       </li>
     </ul>
@@ -354,7 +386,8 @@
       <li><span class="tag">Spring 2025</span> IonQ Research Mentoring Program</li>
       <li><span class="tag">Winter 2024</span> IBM&ndash;Yonsei Quantum Challenge</li>
     </ul>
-    <h3 class="sub">Selected Presentations</h3>
+    <details class="fold">
+      <summary><span class="sub">Selected Presentations</span><span class="fold-count">9 talks</span></summary>
     <ul class="plain talks">
       <li><span class="tag">Sep 2025 &middot; Rutgers</span> SQD: Is VQE Being Replaced?</li>
       <li><span class="tag">Aug 2025 &middot; Rutgers</span> Introduction to LDPC-BB Code</li>
@@ -366,6 +399,7 @@
       <li><span class="tag">Sep 2022 &middot; Yonsei</span> Quantum Circuit Simulation: Basic Concepts &amp; What We Can Do About It</li>
       <li><span class="tag">Sep 2021 &middot; Yonsei</span> Understanding Shor&rsquo;s Algorithm</li>
     </ul>
+    </details>
   </section>
 
   <!-- ===== SKILLS ===== -->
@@ -416,11 +450,26 @@
     </div>
   </section>
 
+  <!-- ===== BEYOND RESEARCH ===== -->
+  <section id="beyond">
+    <h2>Beyond Research</h2>
+    <p>
+      I street dance &mdash; popping since 2016, breaking since 2025. Day to day it feels like nothing
+      moves, however much you drill. Then you watch footage of yourself from a year ago and it&rsquo;s
+      not even close. Research has felt much the same.
+    </p>
+    <div class="links">
+      <a href="https://www.instagram.com/break.seungwoo/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C8.74 0 8.33.01 7.05.07 5.77.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91a5.9 5.9 0 0 0 1.38 2.13 5.9 5.9 0 0 0 2.13 1.38c.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zm0 3.68a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+        @break.seungwoo</a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <p>&copy; <span id="year">2026</span> Seungwoo Choi &middot; Built with plain HTML &amp; CSS, hosted on GitHub Pages.</p>
+    <p>&copy; <span id="year">2026</span> Seungwoo Choi &middot; Built with plain HTML, CSS, and JavaScript, hosted on GitHub Pages.</p>
   </div>
 </footer>
 
