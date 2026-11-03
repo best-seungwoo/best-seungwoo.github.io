@@ -147,8 +147,11 @@ document.querySelectorAll('.dots').forEach(function (el) {
   papers.forEach(function (li) {
     var topics = [];
     li.querySelectorAll('.pub-body h3 b').forEach(function (b) {
-      var m = /\bk-(\w+)\b/.exec(b.className);
-      if (m && topics.indexOf(m[1]) < 0) topics.push(m[1]);
+      // a keyword can carry several k-* classes, so collect every one of them
+      b.className.split(/\s+/).forEach(function (cls) {
+        var m = /^k-(\w+)$/.exec(cls);
+        if (m && topics.indexOf(m[1]) < 0) topics.push(m[1]);
+      });
     });
     li.dataset.topics = topics.join(' ');
   });
@@ -156,7 +159,7 @@ document.querySelectorAll('.dots').forEach(function (el) {
   function update() {
     var on = boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
 
-    ['sim', 'comp', 'vqa', 'err', 'ftqc'].forEach(function (t) {
+    ['sim', 'comp', 'vqa', 'chem', 'qec', 'err'].forEach(function (t) {
       pubs.classList.toggle('hl-' + t, on.indexOf(t) >= 0);
     });
 

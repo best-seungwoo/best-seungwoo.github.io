@@ -117,11 +117,12 @@
   <!-- ===== PUBLICATIONS ===== -->
   <section id="publications">
     <h2>Publications<span class="pub-legend">
-      <label class="k-sim"><input type="checkbox" value="sim">Simulation</label>
-      <label class="k-comp"><input type="checkbox" value="comp">Compilation &amp; optimization</label>
-      <label class="k-vqa"><input type="checkbox" value="vqa">VQA</label>
+      <label class="k-sim"><input type="checkbox" value="sim">Circuit simulation</label>
+      <label class="k-comp"><input type="checkbox" value="comp">Circuit optimization</label>
+      <label class="k-vqa"><input type="checkbox" value="vqa">Variational algorithms</label>
+      <label class="k-chem"><input type="checkbox" value="chem">Chemistry algorithms</label>
+      <label class="k-qec"><input type="checkbox" value="qec">Error correction</label>
       <label class="k-err"><input type="checkbox" value="err">Error mitigation</label>
-      <label class="k-ftqc"><input type="checkbox" value="ftqc">QEC &amp; FTQC</label>
     </span></h2>
     <p class="pub-count"></p>
     <ol class="pubs">
@@ -131,19 +132,8 @@
           <span class="tag first">1st author</span>
         </div>
         <div class="pub-body">
-          <h3><b class="k-comp">Compilation-Aware</b> <b class="k-vqa">Adaptive Ansatz</b> for Near-Term and <b class="k-ftqc">Early Fault-Tolerant</b> Quantum Chemistry</h3>
+          <h3><b class="k-comp">Compilation-Aware</b> <b class="k-vqa k-chem">Adaptive Ansatz</b> for Near-Term and Early <b class="k-qec">Fault-Tolerant Quantum Chemistry</b></h3>
           <p>Incorporated compilation-induced cost into ADAPT-VQE operator selection across the NISQ and EFTQC regimes.</p>
-        </div>
-      </li>
-      <li>
-        <div class="venue-col">
-          <span class="venue">HPCA &rsquo;26</span>
-          <span class="tag">3rd author</span>
-        </div>
-        <div class="pub-body">
-          <h3><a href="https://ieeexplore.ieee.org/document/11408534/" target="_blank" rel="noopener">D&rsquo;ArQ: A <b class="k-comp">QOC Framework</b> with Causality-Aware Grouping and Basis Selection</a></h3>
-          <!-- <p class="pub-where">International Symposium on High Performance Computer Architecture &middot; Jan 31, 2026</p> -->
-          <p>Proposed a causality-aware grouping algorithm and basis selection to optimize pulse-level quantum control.</p>
         </div>
       </li>
       <li>
@@ -155,6 +145,17 @@
           <h3><a href="https://link.springer.com/article/10.1007/s42484-026-00357-w" target="_blank" rel="noopener">Layerwise Retraining and Freezing for <b class="k-vqa">Multi-Angle QAOA</b></a></h3>
           <!-- <p class="pub-where">Quantum Machine Intelligence, Vol. 8 &middot; Jan 26, 2026</p> -->
           <p>Proposed a round-robin layerwise training scheme with selective freezing for efficient Multi-Angle QAOA optimization.</p>
+        </div>
+      </li>
+      <li>
+        <div class="venue-col">
+          <span class="venue">HPCA &rsquo;26</span>
+          <span class="tag">3rd author</span>
+        </div>
+        <div class="pub-body">
+          <h3><a href="https://ieeexplore.ieee.org/document/11408534/" target="_blank" rel="noopener">D&rsquo;ArQ: A <b class="k-comp">QOC Framework</b> with Causality-Aware Grouping and Basis Selection</a></h3>
+          <!-- <p class="pub-where">International Symposium on High Performance Computer Architecture &middot; Jan 31, 2026</p> -->
+          <p>Proposed a causality-aware grouping algorithm and basis selection to optimize pulse-level quantum control.</p>
         </div>
       </li>
       <li>
@@ -218,7 +219,7 @@
           <span class="tag first">1st author</span>
         </div>
         <div class="pub-body">
-          <h3><a href="https://ieeexplore.ieee.org/abstract/document/10818121" target="_blank" rel="noopener">MOSQ: Accelerating <b class="k-sim">Classical Simulation</b> of <b class="k-vqa">UCCSD Ansatz</b> Circuits using Merged Operation</a></h3>
+          <h3><a href="https://ieeexplore.ieee.org/abstract/document/10818121" target="_blank" rel="noopener">MOSQ: Accelerating <b class="k-sim">Classical Simulation</b> of <b class="k-vqa k-chem">UCCSD Ansatz</b> Circuits using Merged Operation</a></h3>
           <!-- <p class="pub-where">International Conference on Computer Design &middot; Nov 20, 2024</p> -->
           <p>Accelerated UCCSD ansatz simulation by merging operations based on Pauli evolution patterns.</p>
         </div>
@@ -256,7 +257,7 @@
           <p>Improved fidelity by running controlled-gate-dependent subcircuits separately and combining measurement outcomes.</p>
         </div>
       </li>
-    </ol>
+</ol>
   </section>
 
   <!-- ===== PROJECTS ===== -->
