@@ -18,11 +18,12 @@
   --radius:    8px;
 
   /* publication keyword colours, shared by the titles and the legend.
-     All four clear 4.5:1 on white — brighter greens/cyans do not. */
+     All five clear 4.5:1 on white — brighter greens/cyans do not. */
   --k-sim:     #047857;
   --k-comp:    #6d28d9;
   --k-vqa:     #b45309;
   --k-err:     #dc2626;
+  --k-ftqc:    #0369a1;
 }
 
 * { box-sizing: border-box; }
@@ -526,12 +527,14 @@ section p { margin: 0 0 14px; }
 #publications.hl-sim  .pub-body h3 b.k-sim,
 #publications.hl-comp .pub-body h3 b.k-comp,
 #publications.hl-vqa  .pub-body h3 b.k-vqa,
-#publications.hl-err  .pub-body h3 b.k-err { font-weight: 700; }
+#publications.hl-err  .pub-body h3 b.k-err,
+#publications.hl-ftqc .pub-body h3 b.k-ftqc { font-weight: 700; }
 
 #publications.hl-sim  .pub-body h3 b.k-sim  { color: var(--k-sim); }
 #publications.hl-comp .pub-body h3 b.k-comp { color: var(--k-comp); }
 #publications.hl-vqa  .pub-body h3 b.k-vqa  { color: var(--k-vqa); }
 #publications.hl-err  .pub-body h3 b.k-err  { color: var(--k-err); }
+#publications.hl-ftqc .pub-body h3 b.k-ftqc { color: var(--k-ftqc); }
 
 /* legend, parked on the right of the section heading */
 #publications h2 {
@@ -582,6 +585,7 @@ section p { margin: 0 0 14px; }
 .pub-legend .k-comp { color: var(--k-comp); }
 .pub-legend .k-vqa  { color: var(--k-vqa); }
 .pub-legend .k-err  { color: var(--k-err); }
+.pub-legend .k-ftqc { color: var(--k-ftqc); }
 
 /* only takes up space while a filter is active */
 .pub-count { margin: -8px 0 16px; font-size: 0.86rem; font-weight: 600; color: var(--ink-2); }

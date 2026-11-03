@@ -156,7 +156,7 @@ document.querySelectorAll('.dots').forEach(function (el) {
   function update() {
     var on = boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
 
-    ['sim', 'comp', 'vqa', 'err'].forEach(function (t) {
+    ['sim', 'comp', 'vqa', 'err', 'ftqc'].forEach(function (t) {
       pubs.classList.toggle('hl-' + t, on.indexOf(t) >= 0);
     });
 
